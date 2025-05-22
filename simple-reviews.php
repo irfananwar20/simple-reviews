@@ -14,6 +14,7 @@ class Simple_Reviews {
     public function __construct() {
         add_action('init', [$this, 'register_product_review_cpt']);
         add_action('rest_api_init', [$this, 'register_rest_routes']);
+        add_shortcode('product_reviews', [$this, 'shortcode_product_reviews']);
     }
 
  
@@ -75,6 +76,10 @@ class Simple_Reviews {
         }
 
         return rest_ensure_response($response);
+    }
+
+    public function shortcode_product_reviews($atts) {
+        return $this->display_product_reviews();
     }
 
     public function display_product_reviews() {
