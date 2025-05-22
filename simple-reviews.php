@@ -46,7 +46,7 @@ class Simple_Reviews {
 
     public function analyze_sentiment($request) {
         $params = $request->get_json_params();
-        $text = isset($params['text']) ? sanitize_text_field($params['text']) : '';
+        $text = isset($params['0']['text']) ? sanitize_text_field($params['0']['text']) : '';
         
         if (empty($text)) {
             return new WP_Error('empty_text', 'No text provided for analysis.', ['status' => 400]);
